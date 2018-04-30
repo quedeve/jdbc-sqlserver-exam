@@ -35,8 +35,8 @@ public class Exam {
         try {
             connection = getKoneksiKeDB();
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Employees(BirthDate, BirthPlate,  BPJSKerjaNo, BPJSSehatNo, DriverLicenseExpDate, DriverLicenseNo, EmpNo, FirstName, LastName, MiddleName, NoKTP,NPWP, PhotoPath, ContactID, GenderID, LoginDetailsId, MaritalStatusID, NationalityID, RelogionID, WorkShiftID )\n"
-                    + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Employees(BirthDate, BirthPlace,  BPJSKerjaNo, BPJSSehatNo, DriverLicenseExpDate, DriverLicenseNo, EmpNo, FirstName, LastName, MiddleName, NoKTP,NPWP, PhotoPath, ContactID, GenderID, LoginDetailsId, MaritalStatusID, NationalityID, ReligionID, WorkShiftID )\n"
+                    + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement prestatement = connection.prepareStatement(sql);
             prestatement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
             prestatement.setString(2, tempatLahir);
@@ -112,7 +112,7 @@ public class Exam {
         Connection connection = null;
         try {
             connection = getKoneksiKeDB();
-            String sql = "UPDATE Employees SET BirthDate=?, BirthPlate,  BPJSKerjaNo=?, BPJSSehatNo=?, DriverLicenseExpDate=?, DriverLicenseNo=?, EmpNo=?, FirstName=?, LastName=?, MiddleName=?, NoKTP=?,NPWP=?, PhotoPath=?, ContactID=?, GenderID=?, LoginDetailsId=?, MaritalStatusID=?, NationalityID=?, RelogionID=?, WorkShiftID=? WHERE ID = ? ";
+            String sql = "UPDATE Employees SET BirthDate=?, BirthPlace=?,  BPJSKerjaNo=?, BPJSSehatNo=?, DriverLicenseExpDate=?, DriverLicenseNo=?, EmpNo=?, FirstName=?, LastName=?, MiddleName=?, NoKTP=?,NPWP=?, PhotoPath=?, ContactID=?, GenderID=?, LoginDetailsId=?, MaritalStatusID=?, NationalityID=?, ReligionID=?, WorkShiftID=? WHERE ID = ? ";
             PreparedStatement prestatement = connection.prepareStatement(sql);
             prestatement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
             prestatement.setString(2, tempatLahir);
@@ -591,7 +591,7 @@ public class Exam {
         }
         if (menu == 4) {
             System.out.println("Masukkan ID employee yang ingi dihapus");
-
+            id = input.nextInt();
             deleteEmployee(id);
         }
 
